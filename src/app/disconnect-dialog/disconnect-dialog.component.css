@@ -1,0 +1,11 @@
+.button__{
+  justify-content: space-between;
+  padding-bottom: 20px;
+}
+button{
+  background-color: #6e62ac;
+  color: white;
+}
+.text{
+  font-size: 18px;
+}

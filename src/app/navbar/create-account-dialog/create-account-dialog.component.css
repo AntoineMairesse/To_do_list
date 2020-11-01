@@ -1,0 +1,9 @@
+.ButtonCreateAccount{
+  background-color: #6e62ac;
+  color: white;
+  width: 35%;
+}
+mat-dialog-actions{
+  justify-content: space-between;
+  padding: 10px;
+}

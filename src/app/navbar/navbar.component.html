@@ -1,0 +1,61 @@
+<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+<div class="example-container" [class.example-is-mobile]="mobileQuery.matches">
+  <mat-toolbar style="background-color: #4b4276" class="example-toolbar">
+    <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
+    <h1 *ngIf="!LoggedIn" class="example-app-name">To Do List</h1>
+    <div *ngIf="LoggedIn">
+      <h1 class="example-app-name">To Do List : &nbsp;</h1>
+      <h6> Bienvenue, &nbsp;{{Username}}</h6>
+    </div>
+    <div class="loginButton" *ngIf="!LoggedIn">
+      <button mat-flat-button color="link" (click)="login()">Login</button>
+    </div>
+    <div class="loginButton" *ngIf="LoggedIn">
+      <button mat-flat-button color="link" (click)="disconnect()">Disconnect</button>
+    </div>
+  </mat-toolbar>
+
+  <mat-sidenav-container class="example-sidenav-container" style="background-image: url(background.jpg);"
+                         [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
+    <mat-sidenav #snav [mode]="'over'"
+                 [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
+      <mat-nav-list>
+        <a routerLink="">
+          <div class="example-box">
+            <mat-icon class="buttonIcon Icon">home</mat-icon>
+            <span class="text">Home</span>
+          </div>
+        </a>
+
+        <a *ngIf="!LoggedIn" style="cursor: pointer" (click)="login()">
+          <div class="example-box">
+            <mat-icon class="buttonIcon Icon">login</mat-icon>
+            <span class="text">Login</span>
+          </div>
+        </a>
+
+        <a *ngIf="LoggedIn" style="cursor: pointer" (click)="disconnect()">
+          <div class="example-box">
+            <mat-icon class="buttonIcon Icon">login</mat-icon>
+            <span class="text">Logout</span>
+          </div>
+        </a>
+
+        <a style="cursor: pointer" (click)="CreateAccountDialog()">
+          <div class="example-box">
+            <mat-icon class="buttonIcon Icon">person_add</mat-icon>
+            <span class="text">Create an Account</span>
+          </div>
+        </a>
+
+      </mat-nav-list>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+      <ng-content></ng-content>
+    </mat-sidenav-content>
+
+  </mat-sidenav-container>
+
+</div>
+

@@ -1,0 +1,65 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+<h2 mat-dialog-title>Create an Account :</h2>
+<mat-dialog-content class="mat-typography">
+
+  <div class="example-container">
+    <mat-form-field style="width: 100%; padding: 10px" appearance="fill">
+      <mat-label >Enter your email</mat-label>
+      <label>
+        <input style="width: 270%; max-width: 270%" (keyup.enter)="CreateAccount()" matInput placeholder="pat@example.com" [formControl]="email" required>
+      </label>
+      <mat-error *ngIf="email.invalid">{{getErrorMessage(email)}}</mat-error>
+      <mat-hint *ngIf="EmailDoubleTest" style="color: red">Email already used!</mat-hint>
+    </mat-form-field>
+  </div>
+
+  <div class="example-container">
+    <mat-form-field appearance="fill" style="padding: 10px; width: 50%">
+      <mat-label>First Name</mat-label>
+      <label>
+        <input (keyup.enter)="CreateAccount()" matInput [formControl]="FirstName" required>
+      </label>
+      <mat-error *ngIf="FirstName.invalid">{{getErrorMessage(FirstName)}}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" style="padding: 10px; width: 50%">
+      <mat-label>Last Name</mat-label>
+      <label>
+        <input (keyup.enter)="CreateAccount()" matInput [formControl]="LastName" required>
+      </label>
+      <mat-error *ngIf="LastName.invalid">{{getErrorMessage(LastName)}}</mat-error>
+    </mat-form-field>
+  </div>
+
+  <div class="example-container">
+    <mat-form-field appearance="fill" style="padding: 10px">
+      <mat-label>Enter your password</mat-label>
+      <label>
+        <input (keyup.enter)="CreateAccount()" matInput [type]="hide ? 'password' : 'text'" [formControl]="Password" required>
+      </label>
+      <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
+      <mat-error *ngIf="Password.invalid">{{getErrorMessage(Password)}}</mat-error>
+      <mat-hint *ngIf="SamePasswordTest" style="color: red">Passwords are not the same!</mat-hint>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" style="padding: 10px">
+      <mat-label>Confirm your password</mat-label>
+      <label>
+        <input (keyup.enter)="CreateAccount()" matInput [type]="hide ? 'password' : 'text'" [formControl]="ConfirmedPassword" required>
+      </label>
+      <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
+      <mat-error *ngIf="ConfirmedPassword.invalid">{{getErrorMessage(ConfirmedPassword)}}</mat-error>
+      <mat-hint *ngIf="SamePasswordTest" style="color: red">Passwords are not the same!</mat-hint>
+    </mat-form-field>
+  </div>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button class="ButtonCreateAccount" mat-raised-button mat-dialog-close [mat-dialog-close] >Cancel</button>
+  <button class="ButtonCreateAccount" mat-raised-button (click)="CreateAccount()">Create</button>
+</mat-dialog-actions><br>
+

@@ -1,0 +1,13 @@
+h1{
+  text-align: center;
+}
+mat-form-field{
+  width: 100%;
+}
+.mat-button{
+  justify-content: space-between;
+}
+.Button__{
+  background-color: #6e62ac;
+  color: white;
+}
